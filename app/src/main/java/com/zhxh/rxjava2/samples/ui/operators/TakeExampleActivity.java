@@ -46,9 +46,7 @@ public class TakeExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
         getObservable()
-                // Run on a background thread
                 .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .take(3)
                 .subscribe(getObserver());

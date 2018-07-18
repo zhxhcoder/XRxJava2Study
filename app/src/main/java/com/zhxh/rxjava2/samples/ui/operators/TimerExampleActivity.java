@@ -19,7 +19,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class TimerExampleActivity extends AppCompatActivity {
 
@@ -31,8 +31,8 @@ public class TimerExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,19 +43,17 @@ public class TimerExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example using timer to do something after 2 second
+     * 利用timer3秒后发送消息
      */
     private void doSomeWork() {
         getObservable()
-                // Run on a background thread
                 .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getObserver());
     }
 
     private Observable<? extends Long> getObservable() {
-        return Observable.timer(2, TimeUnit.SECONDS);
+        return Observable.timer(3, TimeUnit.SECONDS);
     }
 
     private Observer<Long> getObserver() {
