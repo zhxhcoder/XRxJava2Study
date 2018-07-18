@@ -20,7 +20,9 @@
             android:layout_height="48dp"
             android:layout_margin="8dp"
             android:onClick="map"
-            android:text="@string/map" />
+            android:text="@string/map"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/zip"
@@ -28,7 +30,9 @@
             android:layout_height="48dp"
             android:layout_margin="8dp"
             android:onClick="zip"
-            android:text="@string/zip" />
+            android:text="@string/zip"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/flatMapAndFilter"
@@ -36,7 +40,9 @@
             android:layout_height="48dp"
             android:layout_margin="8dp"
             android:onClick="flatMapAndFilter"
-            android:text="@string/flatMapAndFilter" />
+            android:text="@string/flatMapAndFilter"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/take"
@@ -44,7 +50,9 @@
             android:layout_height="48dp"
             android:layout_margin="8dp"
             android:onClick="take"
-            android:text="@string/take" />
+            android:text="@string/take"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/flatMap"
@@ -52,7 +60,9 @@
             android:layout_height="48dp"
             android:layout_margin="8dp"
             android:onClick="flatMap"
-            android:text="@string/flatMap" />
+            android:text="@string/flatMap"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/flatMapWithZip"
@@ -60,7 +70,9 @@
             android:layout_height="48dp"
             android:layout_margin="8dp"
             android:onClick="flatMapWithZip"
-            android:text="@string/flatMapWithZip" />
+            android:text="@string/flatMapWithZip"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 </ScrollView>
