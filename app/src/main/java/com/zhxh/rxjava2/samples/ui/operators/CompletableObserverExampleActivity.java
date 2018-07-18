@@ -19,7 +19,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class CompletableObserverExampleActivity extends AppCompatActivity {
 
@@ -31,8 +31,8 @@ public class CompletableObserverExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,14 +43,13 @@ public class CompletableObserverExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example using CompletableObserver
+     * CompletableObserver操作符
      */
     private void doSomeWork() {
         Completable completable = Completable.timer(1000, TimeUnit.MILLISECONDS);
 
         completable
                 .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getCompletableObserver());
     }
