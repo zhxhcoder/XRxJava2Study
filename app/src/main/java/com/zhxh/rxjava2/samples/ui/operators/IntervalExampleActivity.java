@@ -19,7 +19,7 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class IntervalExampleActivity extends AppCompatActivity {
 
@@ -32,8 +32,8 @@ public class IntervalExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,18 +46,16 @@ public class IntervalExampleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        disposables.clear(); // clearing it : do not emit after destroy
+        disposables.clear();
     }
 
     /*
-     * simple example using interval to run task at an interval of 2 sec
-     * which start immediately
+     * 通过该例子利用interval操作符每隔2s运行某个任务
+     * 注意，首次会立即运行
      */
     private void doSomeWork() {
         disposables.add(getObservable()
-                // Run on a background thread
                 .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(getObserver()));
     }
