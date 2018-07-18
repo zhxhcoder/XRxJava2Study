@@ -16,7 +16,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class FlowableExampleActivity extends AppCompatActivity {
 
@@ -28,8 +28,8 @@ public class FlowableExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,16 +40,16 @@ public class FlowableExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example using Flowable
+     * Flowable操作符
      */
     private void doSomeWork() {
 
-        Flowable<Integer> observable = Flowable.just(1, 2, 3, 4);
+        Flowable<Integer> observable = Flowable.just(1, 3, 6, 9);
 
-        observable.reduce(50, new BiFunction<Integer, Integer, Integer>() {
+        observable.reduce(10, new BiFunction<Integer, Integer, Integer>() {
             @Override
             public Integer apply(Integer t1, Integer t2) {
-                return t1 + t2;
+                return t1 + t2;//10+1+3+6+9
             }
         }).subscribe(getObserver());
 
