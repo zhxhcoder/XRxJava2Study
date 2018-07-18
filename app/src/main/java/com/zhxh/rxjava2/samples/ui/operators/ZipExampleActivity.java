@@ -48,27 +48,23 @@ public class ZipExampleActivity extends AppCompatActivity {
     }
 
     /*
-    * Here we are getting two user list
-    * One, the list of cricket fans
-    * Another one, the list of football fans
-    * Then we are finding the list of users who loves both
-    */
+     * 该例子中
+     * 我们得到苹果爱好者与香蕉爱好者并找出博爱者
+     */
     private void doSomeWork() {
-        Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
+        Observable.zip(getAppleFansObservable(), getBananaFansObservable(),
                 new BiFunction<List<User>, List<User>, List<User>>() {
                     @Override
-                    public List<User> apply(List<User> cricketFans, List<User> footballFans) {
-                        return Utils.filterUserWhoLovesBoth(cricketFans, footballFans);
+                    public List<User> apply(List<User> appleFans, List<User> bananaFans) {
+                        return Utils.filterUserWhoLovesBoth(appleFans, bananaFans);
                     }
                 })
-                // Run on a background thread
                 .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getObserver());
     }
 
-    private Observable<List<User>> getCricketFansObservable() {
+    private Observable<List<User>> getAppleFansObservable() {
         return Observable.create(new ObservableOnSubscribe<List<User>>() {
             @Override
             public void subscribe(ObservableEmitter<List<User>> e) {
@@ -80,7 +76,7 @@ public class ZipExampleActivity extends AppCompatActivity {
         });
     }
 
-    private Observable<List<User>> getFootballFansObservable() {
+    private Observable<List<User>> getBananaFansObservable() {
         return Observable.create(new ObservableOnSubscribe<List<User>>() {
             @Override
             public void subscribe(ObservableEmitter<List<User>> e) {
@@ -105,7 +101,7 @@ public class ZipExampleActivity extends AppCompatActivity {
                 textView.append(" onNext");
                 textView.append(AppConstant.LINE_SEPARATOR);
                 for (User user : userList) {
-                    textView.append(" firstname : " + user.firstname);
+                    textView.append(" 博爱者名字 : " + user.firstname);
                     textView.append(AppConstant.LINE_SEPARATOR);
                 }
                 Log.d(TAG, " onNext : " + userList.size());

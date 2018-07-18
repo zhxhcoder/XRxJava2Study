@@ -116,12 +116,12 @@ public class Utils {
     }
 
 
-    public static List<User> filterUserWhoLovesBoth(List<User> cricketFans, List<User> footballFans) {
+    public static List<User> filterUserWhoLovesBoth(List<User> appleFans, List<User> bananaFans) {
         List<User> userWhoLovesBoth = new ArrayList<User>();
-        for (User cricketFan : cricketFans) {
-            for (User footballFan : footballFans) {
-                if (cricketFan.id == footballFan.id) {
-                    userWhoLovesBoth.add(cricketFan);
+        for (User appleFan : appleFans) {
+            for (User bananaFan : bananaFans) {
+                if (appleFan.id == bananaFan.id) {
+                    userWhoLovesBoth.add(appleFan);
                 }
             }
         }

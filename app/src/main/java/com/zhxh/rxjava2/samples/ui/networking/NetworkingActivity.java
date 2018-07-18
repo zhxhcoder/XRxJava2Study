@@ -88,19 +88,19 @@ public class NetworkingActivity extends AppCompatActivity {
      */
 
     /**
-     * This observable return the list of User who loves cricket
+     * This observable return the list of User who loves apple
      */
-    private Observable<List<User>> getCricketFansObservable() {
-        return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllCricketFans")
+    private Observable<List<User>> getAppleFansObservable() {
+        return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllAppleFans")
                 .build()
                 .getObjectListObservable(User.class);
     }
 
     /*
-    * This observable return the list of User who loves Football
+    * This observable return the list of User who loves Banana
     */
-    private Observable<List<User>> getFootballFansObservable() {
-        return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllFootballFans")
+    private Observable<List<User>> getBananaFansObservable() {
+        return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllBananaFans")
                 .build()
                 .getObjectListObservable(User.class);
     }
@@ -112,12 +112,12 @@ public class NetworkingActivity extends AppCompatActivity {
     */
     private void findUsersWhoLovesBoth() {
         // here we are using zip operator to combine both request
-        Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
+        Observable.zip(getAppleFansObservable(), getBananaFansObservable(),
                 new BiFunction<List<User>, List<User>, List<User>>() {
                     @Override
-                    public List<User> apply(List<User> cricketFans, List<User> footballFans) throws Exception {
+                    public List<User> apply(List<User> appleFans, List<User> bananaFans) throws Exception {
                         List<User> userWhoLovesBoth =
-                                filterUserWhoLovesBoth(cricketFans, footballFans);
+                                filterUserWhoLovesBoth(appleFans, bananaFans);
                         return userWhoLovesBoth;
                     }
                 })
@@ -150,12 +150,12 @@ public class NetworkingActivity extends AppCompatActivity {
                 });
     }
 
-    private List<User> filterUserWhoLovesBoth(List<User> cricketFans, List<User> footballFans) {
+    private List<User> filterUserWhoLovesBoth(List<User> appleFans, List<User> bananaFans) {
         List<User> userWhoLovesBoth = new ArrayList<>();
 
-        for (User footballFan : footballFans) {
-            if (cricketFans.contains(footballFan)) {
-                userWhoLovesBoth.add(footballFan);
+        for (User bananaFan : bananaFans) {
+            if (appleFans.contains(bananaFan)) {
+                userWhoLovesBoth.add(bananaFan);
             }
         }
 

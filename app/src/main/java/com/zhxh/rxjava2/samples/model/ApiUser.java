@@ -12,7 +12,7 @@ public class ApiUser {
     public String toString() {
         return "ApiUser{" +
                 "id=" + id +
-                ", 姓名='" + firstname + '\'' +
+                ", 名字='" + firstname + '\'' +
                 ", 姓氏='" + lastname + '\'' +
                 '}';
     }

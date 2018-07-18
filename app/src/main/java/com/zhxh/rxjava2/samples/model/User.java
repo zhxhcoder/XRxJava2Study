@@ -22,7 +22,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", 姓名='" + firstname + '\'' +
+                ", 名字='" + firstname + '\'' +
                 ", 姓氏='" + lastname + '\'' +
                 ", 关注=" + isFollowing +
                 '}';
