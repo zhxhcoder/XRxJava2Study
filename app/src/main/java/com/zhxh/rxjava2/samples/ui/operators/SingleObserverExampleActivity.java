@@ -15,7 +15,7 @@ import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class SingleObserverExampleActivity extends AppCompatActivity {
 
@@ -27,8 +27,8 @@ public class SingleObserverExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,10 +39,10 @@ public class SingleObserverExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example using SingleObserver
+     * SingleObserver操作符
      */
     private void doSomeWork() {
-        Single.just("Amit")
+        Single.just("xh")
                 .subscribe(getSingleObserver());
     }
 
