@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class Utils {
 
@@ -23,18 +23,18 @@ public class Utils {
         List<User> userList = new ArrayList<>();
 
         User userOne = new User();
-        userOne.firstname = "Amit";
-        userOne.lastname = "Shekhar";
+        userOne.firstname = "xh";
+        userOne.lastname = "Lei";
         userList.add(userOne);
 
         User userTwo = new User();
-        userTwo.firstname = "Manish";
-        userTwo.lastname = "Kumar";
+        userTwo.firstname = "ch";
+        userTwo.lastname = "Zh";
         userList.add(userTwo);
 
         User userThree = new User();
-        userThree.firstname = "Sumit";
-        userThree.lastname = "Kumar";
+        userThree.firstname = "cy";
+        userThree.lastname = "Zh";
         userList.add(userThree);
 
         return userList;
@@ -45,18 +45,18 @@ public class Utils {
         List<ApiUser> apiUserList = new ArrayList<>();
 
         ApiUser apiUserOne = new ApiUser();
-        apiUserOne.firstname = "Amit";
-        apiUserOne.lastname = "Shekhar";
+        apiUserOne.firstname = "xh";
+        apiUserOne.lastname = "Lei";
         apiUserList.add(apiUserOne);
 
         ApiUser apiUserTwo = new ApiUser();
-        apiUserTwo.firstname = "Manish";
-        apiUserTwo.lastname = "Kumar";
+        apiUserTwo.firstname = "ch";
+        apiUserTwo.lastname = "Zh";
         apiUserList.add(apiUserTwo);
 
         ApiUser apiUserThree = new ApiUser();
-        apiUserThree.firstname = "Sumit";
-        apiUserThree.lastname = "Kumar";
+        apiUserThree.firstname = "cy";
+        apiUserThree.lastname = "Zh";
         apiUserList.add(apiUserThree);
 
         return apiUserList;
@@ -76,40 +76,40 @@ public class Utils {
         return userList;
     }
 
-    public static List<User> getUserListWhoLovesCricket() {
+    public static List<User> getUserListWhoLovesApple() {
 
         List<User> userList = new ArrayList<>();
 
         User userOne = new User();
         userOne.id = 1;
-        userOne.firstname = "Amit";
-        userOne.lastname = "Shekhar";
+        userOne.firstname = "xh";
+        userOne.lastname = "Lei";
         userList.add(userOne);
 
         User userTwo = new User();
         userTwo.id = 2;
-        userTwo.firstname = "Manish";
-        userTwo.lastname = "Kumar";
+        userTwo.firstname = "ch";
+        userTwo.lastname = "Zh";
         userList.add(userTwo);
 
         return userList;
     }
 
 
-    public static List<User> getUserListWhoLovesFootball() {
+    public static List<User> getUserListWhoLovesBanana() {
 
         List<User> userList = new ArrayList<>();
 
         User userOne = new User();
         userOne.id = 1;
-        userOne.firstname = "Amit";
-        userOne.lastname = "Shekhar";
+        userOne.firstname = "xh";
+        userOne.lastname = "Lei";
         userList.add(userOne);
 
         User userTwo = new User();
         userTwo.id = 3;
-        userTwo.firstname = "Sumit";
-        userTwo.lastname = "Kumar";
+        userTwo.firstname = "cy";
+        userTwo.lastname = "Zh";
         userList.add(userTwo);
 
         return userList;

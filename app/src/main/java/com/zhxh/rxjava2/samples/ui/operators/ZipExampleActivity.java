@@ -24,7 +24,7 @@ import io.reactivex.functions.BiFunction;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class ZipExampleActivity extends AppCompatActivity {
 
@@ -36,8 +36,8 @@ public class ZipExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +57,7 @@ public class ZipExampleActivity extends AppCompatActivity {
         Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
                 new BiFunction<List<User>, List<User>, List<User>>() {
                     @Override
-                    public List<User> apply(List<User> cricketFans, List<User> footballFans) throws Exception {
+                    public List<User> apply(List<User> cricketFans, List<User> footballFans) {
                         return Utils.filterUserWhoLovesBoth(cricketFans, footballFans);
                     }
                 })
@@ -71,9 +71,9 @@ public class ZipExampleActivity extends AppCompatActivity {
     private Observable<List<User>> getCricketFansObservable() {
         return Observable.create(new ObservableOnSubscribe<List<User>>() {
             @Override
-            public void subscribe(ObservableEmitter<List<User>> e) throws Exception {
+            public void subscribe(ObservableEmitter<List<User>> e) {
                 if (!e.isDisposed()) {
-                    e.onNext(Utils.getUserListWhoLovesCricket());
+                    e.onNext(Utils.getUserListWhoLovesApple());
                     e.onComplete();
                 }
             }
@@ -83,9 +83,9 @@ public class ZipExampleActivity extends AppCompatActivity {
     private Observable<List<User>> getFootballFansObservable() {
         return Observable.create(new ObservableOnSubscribe<List<User>>() {
             @Override
-            public void subscribe(ObservableEmitter<List<User>> e) throws Exception {
+            public void subscribe(ObservableEmitter<List<User>> e) {
                 if (!e.isDisposed()) {
-                    e.onNext(Utils.getUserListWhoLovesFootball());
+                    e.onNext(Utils.getUserListWhoLovesBanana());
                     e.onComplete();
                 }
             }

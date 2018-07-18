@@ -25,7 +25,7 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class MapExampleActivity extends AppCompatActivity {
 
@@ -37,8 +37,8 @@ public class MapExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,21 +49,17 @@ public class MapExampleActivity extends AppCompatActivity {
     }
 
     /*
-    * Here we are getting ApiUser Object from api server
-    * then we are converting it into User Object because
-    * may be our database support User Not ApiUser Object
-    * Here we are using Map Operator to do that
-    */
+     * 从服务器中得到ApiUser对象，而我们需求的是支持本地数据库的
+     * User对象，这时我们用Map操作符转换
+     */
     private void doSomeWork() {
         getObservable()
-                // Run on a background thread
                 .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Function<List<ApiUser>, List<User>>() {
 
                     @Override
-                    public List<User> apply(List<ApiUser> apiUsers) throws Exception {
+                    public List<User> apply(List<ApiUser> apiUsers) {
                         return Utils.convertApiUserListToUserList(apiUsers);
                     }
                 })
@@ -73,7 +69,7 @@ public class MapExampleActivity extends AppCompatActivity {
     private Observable<List<ApiUser>> getObservable() {
         return Observable.create(new ObservableOnSubscribe<List<ApiUser>>() {
             @Override
-            public void subscribe(ObservableEmitter<List<ApiUser>> e) throws Exception {
+            public void subscribe(ObservableEmitter<List<ApiUser>> e) {
                 if (!e.isDisposed()) {
                     e.onNext(Utils.getApiUserList());
                     e.onComplete();
@@ -92,10 +88,10 @@ public class MapExampleActivity extends AppCompatActivity {
 
             @Override
             public void onNext(List<User> userList) {
-                textView.append(" onNext");
+                textView.append(" onNext 开始");
                 textView.append(AppConstant.LINE_SEPARATOR);
                 for (User user : userList) {
-                    textView.append(" firstname : " + user.firstname);
+                    textView.append(" 姓名 : " + user.firstname);
                     textView.append(AppConstant.LINE_SEPARATOR);
                 }
                 Log.d(TAG, " onNext : " + userList.size());

@@ -1,7 +1,7 @@
 package com.zhxh.rxjava2.samples.model;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class ApiUser {
     public long id;
@@ -12,8 +12,8 @@ public class ApiUser {
     public String toString() {
         return "ApiUser{" +
                 "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", 姓名='" + firstname + '\'' +
+                ", 姓氏='" + lastname + '\'' +
                 '}';
     }
 }

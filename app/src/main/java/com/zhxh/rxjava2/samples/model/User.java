@@ -1,7 +1,7 @@
 package com.zhxh.rxjava2.samples.model;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class User {
     public long id;
@@ -22,9 +22,9 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", isFollowing=" + isFollowing +
+                ", 姓名='" + firstname + '\'' +
+                ", 姓氏='" + lastname + '\'' +
+                ", 关注=" + isFollowing +
                 '}';
     }
 
