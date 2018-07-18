@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:onClick="startOperatorsActivity"
             android:text="@string/operators"
+            android:textAllCaps="false"
             android:textColor="@android:color/black" />
 
         <Button
@@ -27,6 +28,7 @@
             android:layout_height="wrap_content"
             android:onClick="startNetworkingActivity"
             android:text="@string/networking"
+            android:textAllCaps="false"
             android:textColor="@android:color/black" />
 
         <Button
@@ -34,6 +36,7 @@
             android:layout_height="wrap_content"
             android:onClick="startRxBusActivity"
             android:text="@string/rx_bus"
+            android:textAllCaps="false"
             android:textColor="@android:color/black" />
 
         <Button
@@ -41,6 +44,7 @@
             android:layout_height="wrap_content"
             android:onClick="startPaginationActivity"
             android:text="@string/pagination"
+            android:textAllCaps="false"
             android:textColor="@android:color/black" />
 
         <Button
@@ -48,6 +52,7 @@
             android:layout_height="wrap_content"
             android:onClick="startComposeOperator"
             android:text="@string/compose"
+            android:textAllCaps="false"
             android:textColor="@android:color/black" />
 
         <Button
@@ -55,6 +60,7 @@
             android:layout_height="wrap_content"
             android:onClick="startSearchActivity"
             android:text="@string/search"
+            android:textAllCaps="false"
             android:textColor="@android:color/black" />
 
     </LinearLayout>
