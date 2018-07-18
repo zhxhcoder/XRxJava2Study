@@ -1,7 +1,7 @@
 package com.zhxh.rxjava2.samples.utils;
 
 /**
- * Created by zhxh on 30/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public final class AppConstant {
 

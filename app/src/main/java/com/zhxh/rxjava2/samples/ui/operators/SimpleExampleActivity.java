@@ -17,7 +17,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class SimpleExampleActivity extends AppCompatActivity {
 
@@ -29,8 +29,8 @@ public class SimpleExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,20 +40,17 @@ public class SimpleExampleActivity extends AppCompatActivity {
         });
     }
 
-    /*
-     * simple example to emit two value one by one
-     */
     private void doSomeWork() {
         getObservable()
-                // Run on a background thread
+                //子线程运行
                 .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
+                //主线程收到通知
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getObserver());
     }
 
     private Observable<String> getObservable() {
-        return Observable.just("Cricket", "Football");
+        return Observable.just("嘟嘟", "团团");
     }
 
     private Observer<String> getObserver() {
