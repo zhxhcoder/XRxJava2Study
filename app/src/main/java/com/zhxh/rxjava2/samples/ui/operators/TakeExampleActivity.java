@@ -17,7 +17,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class TakeExampleActivity extends AppCompatActivity {
 
@@ -29,8 +29,8 @@ public class TakeExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,9 +40,10 @@ public class TakeExampleActivity extends AppCompatActivity {
         });
     }
 
-    /* Using take operator, it only emits
-    * required number of values. here only 3 out of 5
-    */
+    /*
+     * take操作符
+     * 此例子只发送前三个消息
+     */
     private void doSomeWork() {
         getObservable()
                 // Run on a background thread
