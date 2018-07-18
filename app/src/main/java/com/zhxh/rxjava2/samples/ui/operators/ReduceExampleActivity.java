@@ -16,7 +16,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/18
  */
 public class ReduceExampleActivity extends AppCompatActivity {
 
@@ -28,8 +28,8 @@ public class ReduceExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +40,8 @@ public class ReduceExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example using reduce to add all the number
+     * reduce操作符
+     * 所以数字相加
      */
     private void doSomeWork() {
         getObservable()
@@ -54,7 +55,7 @@ public class ReduceExampleActivity extends AppCompatActivity {
     }
 
     private Observable<Integer> getObservable() {
-        return Observable.just(1, 2, 3, 4);
+        return Observable.just(1, 3, 6, 9);
     }
 
     private MaybeObserver<Integer> getObserver() {
