@@ -17,7 +17,7 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/19
  */
 public class BufferExampleActivity extends AppCompatActivity {
 
@@ -29,8 +29,8 @@ public class BufferExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,26 +41,27 @@ public class BufferExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example using buffer operator - bundles all emitted values into a list
+     * buffer操作符 传的值以列表list存储
+     *
      */
     private void doSomeWork() {
 
         Observable<List<String>> buffered = getObservable().buffer(3, 1);
 
-        // 3 means,  it takes max of three from its start index and create list
+        // 3 表示取最大的三个从means,  it takes max of three from its start index and create list
         // 1 means, it jumps one step every time
         // so the it gives the following list
-        // 1 - one, two, three
-        // 2 - two, three, four
-        // 3 - three, four, five
-        // 4 - four, five
-        // 5 - five
+        // 1 - 1, 2, 3
+        // 2 - 2, 3, 4
+        // 3 - 3, 4, 5
+        // 4 - 4, 5
+        // 5 - 5
 
         buffered.subscribe(getObserver());
     }
 
     private Observable<String> getObservable() {
-        return Observable.just("one", "two", "three", "four", "five");
+        return Observable.just("1", "2", "3", "4", "5");
     }
 
     private Observer<List<String>> getObserver() {
