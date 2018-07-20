@@ -46,15 +46,22 @@ public class BufferExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
 
-        Observable<List<String>> buffered = getObservable().buffer(3, 1);
+        Observable<List<String>> buffered = getObservable().buffer(3, 2);
 
-        // 3 表示取最大的三个从means,  it takes max of three from its start index and create list
-        // 1 means, it jumps one step every time
-        // so the it gives the following list
+        // 3 表示取最大的三个数值，这些数值从获取最开始index开始并创建
+        // 1 表示每次一步
+        // 得到如下列表
         // 1 - 1, 2, 3
         // 2 - 2, 3, 4
         // 3 - 3, 4, 5
         // 4 - 4, 5
+        // 5 - 5
+
+        // 3 表示取最大的三个数值，这些数值从获取最开始index开始并创建
+        // 2 表示每次一步
+        // 得到如下列表
+        // 1 - 1, 2, 3
+        // 3 - 3, 4, 5
         // 5 - 5
 
         buffered.subscribe(getObserver());
