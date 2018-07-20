@@ -18,6 +18,7 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * Created by zhxh on 2018/1/19
+ * http://reactivex.io/documentation/operators/buffer.html
  */
 public class BufferExampleActivity extends AppCompatActivity {
 
