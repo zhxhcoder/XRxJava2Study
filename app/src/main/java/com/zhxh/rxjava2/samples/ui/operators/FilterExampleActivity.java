@@ -15,9 +15,8 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Predicate;
 
-
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/20
  */
 public class FilterExampleActivity extends AppCompatActivity {
 
@@ -29,8 +28,8 @@ public class FilterExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,14 +40,14 @@ public class FilterExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example by using filter operator to emit only even value
+     * filter 操作符过滤偶数
      *
      */
     private void doSomeWork() {
         Observable.just(1, 2, 3, 4, 5, 6)
                 .filter(new Predicate<Integer>() {
                     @Override
-                    public boolean test(Integer integer) throws Exception {
+                    public boolean test(Integer integer) {
                         return integer % 2 == 0;
                     }
                 })
