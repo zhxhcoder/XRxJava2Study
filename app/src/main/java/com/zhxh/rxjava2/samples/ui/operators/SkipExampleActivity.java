@@ -17,7 +17,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhxh on 27/08/16.
+ * Created by zhxh on 2018/1/20
  */
 public class SkipExampleActivity extends AppCompatActivity {
 
@@ -29,8 +29,8 @@ public class SkipExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,14 +40,12 @@ public class SkipExampleActivity extends AppCompatActivity {
         });
     }
 
-    /* Using skip operator, it will not emit
-    * the first 2 values.
+    /*
+    skip 操作符跳过前两个值
     */
     private void doSomeWork() {
         getObservable()
-                // Run on a background thread
                 .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .skip(2)
                 .subscribe(getObserver());
