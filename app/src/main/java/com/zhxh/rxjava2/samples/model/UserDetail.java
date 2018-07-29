@@ -1,7 +1,7 @@
 package com.zhxh.rxjava2.samples.model;
 
 /**
- * Created by zhxh on 04/02/17.
+ * Created by zhxh on 2018/1/18
  */
 
 public class UserDetail {
