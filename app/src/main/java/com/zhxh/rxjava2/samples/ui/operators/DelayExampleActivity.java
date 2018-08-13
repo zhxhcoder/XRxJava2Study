@@ -19,7 +19,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhxh on 05/03/17.
+ * Created by zhxh on 2018/1/19
  */
 
 public class DelayExampleActivity extends AppCompatActivity {
@@ -32,8 +32,8 @@ public class DelayExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,9 +48,7 @@ public class DelayExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
         getObservable().delay(2, TimeUnit.SECONDS)
-                // Run on a background thread
                 .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getObserver());
     }
