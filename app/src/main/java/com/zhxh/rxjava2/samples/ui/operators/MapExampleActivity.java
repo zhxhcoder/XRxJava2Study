@@ -53,8 +53,15 @@ public class MapExampleActivity extends AppCompatActivity {
      * User对象，这时我们用Map操作符转换
      */
     private void doSomeWork() {
-        getObservable()
-                .subscribeOn(Schedulers.io())
+        Observable.create(new ObservableOnSubscribe<List<ApiUser>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<ApiUser>> e) {
+                if (!e.isDisposed()) {
+                    e.onNext(Utils.getApiUserList());
+                    e.onComplete();
+                }
+            }
+        }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Function<List<ApiUser>, List<User>>() {
 
@@ -63,54 +70,38 @@ public class MapExampleActivity extends AppCompatActivity {
                         return Utils.convertApiUserListToUserList(apiUsers);
                     }
                 })
-                .subscribe(getObserver());
-    }
+                .subscribe(new Observer<List<User>>() {
 
-    private Observable<List<ApiUser>> getObservable() {
-        return Observable.create(new ObservableOnSubscribe<List<ApiUser>>() {
-            @Override
-            public void subscribe(ObservableEmitter<List<ApiUser>> e) {
-                if (!e.isDisposed()) {
-                    e.onNext(Utils.getApiUserList());
-                    e.onComplete();
-                }
-            }
-        });
-    }
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d(TAG, " onSubscribe : " + d.isDisposed());
+                    }
 
-    private Observer<List<User>> getObserver() {
-        return new Observer<List<User>>() {
+                    @Override
+                    public void onNext(List<User> userList) {
+                        textView.append(" onNext 开始");
+                        textView.append(AppConstant.LINE_SEPARATOR);
+                        for (User user : userList) {
+                            textView.append(" 名字 : " + user.firstname);
+                            textView.append(AppConstant.LINE_SEPARATOR);
+                        }
+                        Log.d(TAG, " onNext : " + userList.size());
+                    }
 
-            @Override
-            public void onSubscribe(Disposable d) {
-                Log.d(TAG, " onSubscribe : " + d.isDisposed());
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        textView.append(" onError : " + e.getMessage());
+                        textView.append(AppConstant.LINE_SEPARATOR);
+                        Log.d(TAG, " onError : " + e.getMessage());
+                    }
 
-            @Override
-            public void onNext(List<User> userList) {
-                textView.append(" onNext 开始");
-                textView.append(AppConstant.LINE_SEPARATOR);
-                for (User user : userList) {
-                    textView.append(" 名字 : " + user.firstname);
-                    textView.append(AppConstant.LINE_SEPARATOR);
-                }
-                Log.d(TAG, " onNext : " + userList.size());
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                textView.append(" onError : " + e.getMessage());
-                textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onError : " + e.getMessage());
-            }
-
-            @Override
-            public void onComplete() {
-                textView.append(" onComplete");
-                textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onComplete");
-            }
-        };
+                    @Override
+                    public void onComplete() {
+                        textView.append(" onComplete整体");
+                        textView.append(AppConstant.LINE_SEPARATOR);
+                        Log.d(TAG, " onComplete");
+                    }
+                });
     }
 
 
