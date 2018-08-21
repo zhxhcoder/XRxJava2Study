@@ -14,11 +14,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-
 /**
- * Created by zhxh on 06/02/17.
+ * Created by zhxh on 2018/1/23
  */
-
 public class RxBusActivity extends AppCompatActivity {
 
     public static final String TAG = RxBusActivity.class.getSimpleName();
@@ -36,8 +34,8 @@ public class RxBusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rxbus);
-        textView = (TextView) findViewById(R.id.textView);
-        button = (Button) findViewById(R.id.button);
+        textView = findViewById(R.id.textView);
+        button = findViewById(R.id.button);
 
         disposables.add(((MyApplication) getApplication())
                 .bus()
@@ -46,7 +44,7 @@ public class RxBusActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Object>() {
                     @Override
-                    public void accept(Object object) throws Exception {
+                    public void accept(Object object) {
                         if (object instanceof Events.AutoEvent) {
                             textView.setText("Auto Event Received");
                         } else if (object instanceof Events.TapEvent) {

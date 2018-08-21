@@ -6,9 +6,8 @@ import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
 
 /**
- * Created by zhxh on 15/10/17.
+ * Created by zhxh on 2018/1/23
  */
-
 public class RxSearchObservable {
 
     private RxSearchObservable() {
