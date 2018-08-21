@@ -16,7 +16,7 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by techteam on 13/09/16.
+ * Created by zhxh on 2018/1/23
  */
 public class DistinctExampleActivity extends AppCompatActivity {
 
@@ -28,8 +28,8 @@ public class DistinctExampleActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +41,8 @@ public class DistinctExampleActivity extends AppCompatActivity {
 
     /*
      * distinct() suppresses duplicate items emitted by the source Observable.
+     * 删除重复的
+     * 1,2,3,4,6
      */
     private void doSomeWork() {
 
