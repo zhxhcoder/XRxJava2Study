@@ -53,6 +53,8 @@ public class MapExampleActivity extends AppCompatActivity {
      * User对象，这时我们用Map操作符转换
      */
     private void doSomeWork() {
+
+        final Disposable[] disposable = new Disposable[1];
         Observable.create(new ObservableOnSubscribe<List<ApiUser>>() {
             @Override
             public void subscribe(ObservableEmitter<List<ApiUser>> e) {
@@ -74,7 +76,8 @@ public class MapExampleActivity extends AppCompatActivity {
 
                     @Override
                     public void onSubscribe(Disposable d) {
-                        Log.d(TAG, " onSubscribe : " + d.isDisposed());
+                        disposable[0] = d;
+                        Log.d(TAG, " onSubscribe onSubscribe: " + disposable[0].isDisposed());
                     }
 
                     @Override
@@ -99,7 +102,12 @@ public class MapExampleActivity extends AppCompatActivity {
                     public void onComplete() {
                         textView.append(" onComplete整体");
                         textView.append(AppConstant.LINE_SEPARATOR);
-                        Log.d(TAG, " onComplete");
+                        Log.d(TAG, " onSubscribe onComplete: " + disposable[0].isDisposed());
+
+                        disposable[0].dispose();
+
+                        Log.d(TAG, " onSubscribe onComplete: " + disposable[0].isDisposed());
+
                     }
                 });
     }
