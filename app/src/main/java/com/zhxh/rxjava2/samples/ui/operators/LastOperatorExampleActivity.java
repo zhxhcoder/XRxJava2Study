@@ -16,7 +16,7 @@ import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by techteam on 13/09/16.
+ * Created by zhxh on 2018/1/18
  */
 public class LastOperatorExampleActivity extends AppCompatActivity {
 
@@ -29,8 +29,8 @@ public class LastOperatorExampleActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
