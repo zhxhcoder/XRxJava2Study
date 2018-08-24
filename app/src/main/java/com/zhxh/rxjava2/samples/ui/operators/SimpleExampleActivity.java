@@ -8,7 +8,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.zhxh.rxjava2.samples.R;
+import com.zhxh.rxjava2.samples.model.UserDetail;
+import com.zhxh.rxjava2.samples.rxbus.RxBus;
+import com.zhxh.rxjava2.samples.rxbus.Subscribe;
+import com.zhxh.rxjava2.samples.rxbus.ThreadMode;
 import com.zhxh.rxjava2.samples.utils.AppConstant;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -21,7 +27,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class SimpleExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = SimpleExampleActivity.class.getSimpleName();
+    private static final String TAG = "rxbus";
     Button btn;
     TextView textView;
 
@@ -38,6 +44,20 @@ public class SimpleExampleActivity extends AppCompatActivity {
                 doSomeWork();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        /*注册*/
+        RxBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        /*注销*/
+        RxBus.getDefault().unRegister(this);
     }
 
     private void doSomeWork() {
@@ -84,5 +104,8 @@ public class SimpleExampleActivity extends AppCompatActivity {
         };
     }
 
-
+    @Subscribe(code = AppConstant.BUS_INTERVAL, threadMode = ThreadMode.MAIN_THREAD)
+    public void onBusInterval(UserDetail data) {
+        Log.d(TAG, "onBusInterval " + data.id);
+    }
 }
