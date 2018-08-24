@@ -28,6 +28,7 @@ public class SimpleExampleActivity extends AppCompatActivity {
     private static final String TAG = "rxbus";
     Button btn;
     TextView textView;
+    TextView tvBus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class SimpleExampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_example);
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
+        tvBus = findViewById(R.id.tvBus);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +106,6 @@ public class SimpleExampleActivity extends AppCompatActivity {
 
     @Subscribe(code = AppConstant.BUS_INTERVAL, threadMode = ThreadMode.MAIN_THREAD)
     public void onBusInterval(User data) {
-        Log.d(TAG, " onBusInterval" + data.id);
-        textView.append("\nonBusInterval " + data.id);
+        tvBus.append("\nonBusInterval " + data.id);
     }
 }
