@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.zhxh.rxjava2.samples.R;
+import com.zhxh.rxjava2.samples.model.User;
 import com.zhxh.rxjava2.samples.model.UserDetail;
 import com.zhxh.rxjava2.samples.rxbus.RxBus;
 import com.zhxh.rxjava2.samples.utils.AppConstant;
@@ -73,7 +74,7 @@ public class IntervalExampleActivity extends AppCompatActivity {
             @Override
             public void onNext(Long value) {
 
-                RxBus.getDefault().post(AppConstant.BUS_INTERVAL, new UserDetail(value));
+                RxBus.getDefault().post(AppConstant.BUS_INTERVAL, new User(value));
 
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);

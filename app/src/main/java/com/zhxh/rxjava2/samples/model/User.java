@@ -9,6 +9,10 @@ public class User {
     public String lastname;
     public boolean isFollowing;
 
+    public User(long id) {
+        this.id = id;
+    }
+
     public User() {
     }
 
