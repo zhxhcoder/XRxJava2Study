@@ -15,21 +15,21 @@ public class SubscriberMethod {
     public int code;
     public boolean sticky;
 
-    public SubscriberMethod(Object subscriber, Method method, Class<?> eventType, int code,ThreadMode threadMode,boolean sticky ) {
+    SubscriberMethod(Object subscriber, Method method, Class<?> eventType, int code, ThreadMode threadMode, boolean sticky) {
         this.method = method;
         this.threadMode = threadMode;
         this.eventType = eventType;
         this.subscriber = subscriber;
         this.code = code;
-        this.sticky=sticky;
+        this.sticky = sticky;
     }
-
 
     /**
      * 调用方法
+     *
      * @param o 参数
      */
-    public void invoke(Object o){
+    public void invoke(Object o) {
         try {
             method.invoke(subscriber, o);
         } catch (IllegalAccessException e) {

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.zhxh.rxjava2.samples.R;
 import com.zhxh.rxjava2.samples.model.Car;
+import com.zhxh.rxjava2.samples.model.UserDetail;
+import com.zhxh.rxjava2.samples.rxbus.RxBus;
 import com.zhxh.rxjava2.samples.utils.AppConstant;
 
 import io.reactivex.Observable;

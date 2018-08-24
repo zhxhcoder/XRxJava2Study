@@ -10,5 +10,6 @@ public final class AppConstant {
     }
 
     public static final String LINE_SEPARATOR = "\n";
+    public static final int BUS_INTERVAL = 1001;
 
 }

@@ -6,6 +6,10 @@ package com.zhxh.rxjava2.samples.model;
 
 public class UserDetail {
 
+    public UserDetail(long id) {
+        this.id = id;
+    }
+
     public long id;
     public String firstname;
     public String lastname;

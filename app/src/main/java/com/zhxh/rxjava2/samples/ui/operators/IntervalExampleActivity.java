@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.zhxh.rxjava2.samples.R;
+import com.zhxh.rxjava2.samples.model.UserDetail;
+import com.zhxh.rxjava2.samples.rxbus.RxBus;
 import com.zhxh.rxjava2.samples.utils.AppConstant;
 
 import java.util.concurrent.TimeUnit;
@@ -38,6 +40,7 @@ public class IntervalExampleActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 doSomeWork();
             }
         });
@@ -69,6 +72,9 @@ public class IntervalExampleActivity extends AppCompatActivity {
 
             @Override
             public void onNext(Long value) {
+
+                RxBus.getDefault().post(AppConstant.BUS_INTERVAL, new UserDetail(value));
+
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onNext : value : " + value);
