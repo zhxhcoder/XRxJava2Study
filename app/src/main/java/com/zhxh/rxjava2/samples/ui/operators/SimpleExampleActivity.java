@@ -9,13 +9,10 @@ import android.widget.TextView;
 
 import com.zhxh.rxjava2.samples.R;
 import com.zhxh.rxjava2.samples.model.User;
-import com.zhxh.rxjava2.samples.model.UserDetail;
 import com.zhxh.rxjava2.samples.rxbus.RxBus;
 import com.zhxh.rxjava2.samples.rxbus.Subscribe;
 import com.zhxh.rxjava2.samples.rxbus.ThreadMode;
 import com.zhxh.rxjava2.samples.utils.AppConstant;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -107,6 +104,7 @@ public class SimpleExampleActivity extends AppCompatActivity {
 
     @Subscribe(code = AppConstant.BUS_INTERVAL, threadMode = ThreadMode.MAIN_THREAD)
     public void onBusInterval(User data) {
+        Log.d(TAG, " onBusInterval" + data.id);
         textView.append("\nonBusInterval " + data.id);
     }
 }

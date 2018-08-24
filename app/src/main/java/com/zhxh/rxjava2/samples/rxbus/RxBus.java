@@ -79,6 +79,13 @@ public class RxBus {
         bus.onNext(new Msg(code, o));
     }
 
+    public void postSticky(int code, Object o) {
+        synchronized (stickyEvent) {
+            stickyEvent.put(o.getClass(), o);
+        }
+        bus.onNext(new Msg(code, o));
+    }
+
 
     /**
      * 根据传递的code和 eventType 类型返回特定类型(eventType)的 被观察者
@@ -166,8 +173,8 @@ public class RxBus {
             }
         }
         /*没有接受对象，抛出异常*/
-//        if (!recive) {
-//            throw new RuntimeException("RxBus error:no recive targert event");
+//        if (!receiver) {
+//            throw new RuntimeException("RxBus error:no receiver target event");
 //        }
     }
 
@@ -180,17 +187,17 @@ public class RxBus {
      * @return
      */
     private boolean isAdd(Class eventType, SubscriberMethod subscriberMethod) {
-        boolean resulte = true;
+        boolean result = true;
         List<SubscriberMethod> subscriberMethods = subscriberMethodByEventType.get(eventType);
         if (subscriberMethods != null && subscriberMethods.size() > 0) {
             for (SubscriberMethod subscriberMethod1 : subscriberMethods) {
                 if (subscriberMethod1.code == subscriberMethod.code) {
-                    resulte = false;
+                    result = false;
                     break;
                 }
             }
         }
-        return resulte;
+        return result;
     }
 
 
