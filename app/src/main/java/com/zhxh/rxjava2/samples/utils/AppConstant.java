@@ -11,5 +11,6 @@ public final class AppConstant {
 
     public static final String LINE_SEPARATOR = "\n";
     public static final int BUS_INTERVAL = 1001;
+    public static final int BUS_STICKY_LAST = 1002;
 
 }
