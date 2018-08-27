@@ -49,7 +49,7 @@ public class SimpleExampleActivity extends AppCompatActivity {
 
 
         // 注册带 tag 为 "my tag" 的 String 类型事件
-        com.zhxh.xlibkit.rxbus.RxBus.getDefault().subscribeSticky(this, "my tag", new com.zhxh.xlibkit.rxbus.RxBus.Callback<User>() {
+        com.zhxh.xlibkit.rxbus.RxBus.getDefault().subscribeSticky(this, "myTag", new com.zhxh.xlibkit.rxbus.RxBus.Callback<User>() {
             @Override
             public void onEvent(User s) {
 
