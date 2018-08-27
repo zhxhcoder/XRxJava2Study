@@ -26,6 +26,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
 
     implementation project(':xbus')
+    implementation(name: 'xkt', ext: 'aar')
 
     implementation 'com.amitshekhar.android:rx2-android-networking:1.0.0'
 }
