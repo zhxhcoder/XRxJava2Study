@@ -49,11 +49,11 @@ public class SimpleExampleActivity extends AppCompatActivity {
 
 
         // 注册带 tag 为 "my tag" 的 String 类型事件
-        com.zhxh.xlibkit.rxbus.RxBus.getDefault().subscribeSticky(this, "my tag", new com.zhxh.xlibkit.rxbus.RxBus.Callback<String>() {
+        com.zhxh.xlibkit.rxbus.RxBus.getDefault().subscribeSticky(this, "my tag", new com.zhxh.xlibkit.rxbus.RxBus.Callback<User>() {
             @Override
-            public void onEvent(String s) {
-                Log.e("eventTag", s);
-                tvKitBus.append("\neventTag " + s);
+            public void onEvent(User s) {
+
+                tvKitBus.append("\neventTag " + s.id);
 
             }
         });

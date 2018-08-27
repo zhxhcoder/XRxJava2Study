@@ -76,7 +76,7 @@ public class IntervalExampleActivity extends AppCompatActivity {
 
                 RxBus.getDefault().post(AppConstant.BUS_INTERVAL, new User(value));
 
-                com.zhxh.xlibkit.rxbus.RxBus.getDefault().postSticky("with tag event", "my tag");
+                com.zhxh.xlibkit.rxbus.RxBus.getDefault().postSticky(new User(value), "my tag");
 
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
