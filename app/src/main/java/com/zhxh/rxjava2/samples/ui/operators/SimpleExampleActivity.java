@@ -29,6 +29,7 @@ public class SimpleExampleActivity extends AppCompatActivity {
     Button btn;
     TextView textView;
     TextView tvBus;
+    TextView tvKitBus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +38,23 @@ public class SimpleExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
         tvBus = findViewById(R.id.tvBus);
+        tvKitBus = findViewById(R.id.tvKitBus);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 doSomeWork();
+            }
+        });
+
+
+        // 注册带 tag 为 "my tag" 的 String 类型事件
+        com.zhxh.xlibkit.rxbus.RxBus.getDefault().subscribeSticky(this, "my tag", new com.zhxh.xlibkit.rxbus.RxBus.Callback<String>() {
+            @Override
+            public void onEvent(String s) {
+                Log.e("eventTag", s);
+                tvKitBus.append("\neventTag " + s);
+
             }
         });
     }
@@ -58,6 +71,10 @@ public class SimpleExampleActivity extends AppCompatActivity {
         super.onDestroy();
         /*注销*/
         RxBus.getDefault().unRegister(this);
+
+
+        com.zhxh.xlibkit.rxbus.RxBus.getDefault().unregister(this);
+
     }
 
     private void doSomeWork() {

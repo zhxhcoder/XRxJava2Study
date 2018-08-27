@@ -50,7 +50,7 @@ public class IntervalExampleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //disposables.clear();
+        disposables.clear();
     }
 
     /*
@@ -75,6 +75,8 @@ public class IntervalExampleActivity extends AppCompatActivity {
             public void onNext(Long value) {
 
                 RxBus.getDefault().post(AppConstant.BUS_INTERVAL, new User(value));
+
+                com.zhxh.xlibkit.rxbus.RxBus.getDefault().postSticky("with tag event", "my tag");
 
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
