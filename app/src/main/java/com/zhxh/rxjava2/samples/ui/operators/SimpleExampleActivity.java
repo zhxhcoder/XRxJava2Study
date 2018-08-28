@@ -121,7 +121,7 @@ public class SimpleExampleActivity extends AppCompatActivity {
         };
     }
 
-    @Subscribe(code = AppConstant.BUS_INTERVAL, threadMode = ThreadMode.MAIN_THREAD)
+    @Subscribe(threadMode = ThreadMode.MAIN_THREAD, sticky = true)
     public void onBusInterval(User data) {
         tvBus.append("\nonBusInterval " + data.id);
     }
