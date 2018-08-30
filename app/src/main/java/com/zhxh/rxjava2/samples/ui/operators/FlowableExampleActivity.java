@@ -44,27 +44,27 @@ public class FlowableExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
 
-        Flowable<Integer> observable = Flowable.just(1, 3, 6, 9);
+        Flowable<String> observable = Flowable.just("a", "b", "c", "d");
 
-        observable.reduce(10, new BiFunction<Integer, Integer, Integer>() {
+        observable.reduce("X", new BiFunction<String, String, String>() {
             @Override
-            public Integer apply(Integer t1, Integer t2) {
-                return t1 + t2;//10+1+3+6+9
+            public String apply(String t1, String t2) {
+                return t1 + t2;
             }
         }).subscribe(getObserver());
 
     }
 
-    private SingleObserver<Integer> getObserver() {
+    private SingleObserver<String> getObserver() {
 
-        return new SingleObserver<Integer>() {
+        return new SingleObserver<String>() {
             @Override
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onSuccess(Integer value) {
+            public void onSuccess(String value) {
                 textView.append(" onSuccess : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onSuccess : value : " + value);
