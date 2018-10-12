@@ -23,7 +23,7 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by thanhtuan on 26/04/18.
+ * Created by zhxh on 2018/1/18
  */
 public class SwitchMapExampleActivity extends AppCompatActivity {
 
@@ -36,8 +36,8 @@ public class SwitchMapExampleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
 
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

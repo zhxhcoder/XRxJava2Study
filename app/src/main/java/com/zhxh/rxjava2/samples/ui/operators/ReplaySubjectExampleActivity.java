@@ -15,7 +15,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.ReplaySubject;
 
 /**
- * Created by zhxh on 17/12/16.
+ * Created by zhxh on 2018/1/18
  */
 
 public class ReplaySubjectExampleActivity extends AppCompatActivity {
@@ -28,8 +28,8 @@ public class ReplaySubjectExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

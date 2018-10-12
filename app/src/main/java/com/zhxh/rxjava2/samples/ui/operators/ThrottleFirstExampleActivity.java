@@ -22,7 +22,7 @@ import io.reactivex.schedulers.Schedulers;
 
 
 /**
- * Created by threshold on 2017/1/11.
+ * Created by zhxh on 2018/1/18
  */
 
 public class ThrottleFirstExampleActivity extends AppCompatActivity {
@@ -35,8 +35,8 @@ public class ThrottleFirstExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
