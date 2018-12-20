@@ -83,11 +83,13 @@ public class SimpleExampleActivity extends AppCompatActivity {
     private void doSomeWork() {
 
         Observable.create((ObservableOnSubscribe<String>) e -> {
+
             e.onNext("嘟嘟");
+            Thread.sleep(5);
             e.onNext("团团");
             e.onComplete();
 
-        }).timeout(1, TimeUnit.MICROSECONDS)
+        }).timeout(6, TimeUnit.MICROSECONDS)
                 //子线程运行
                 .subscribeOn(Schedulers.io())
                 //主线程收到通知
