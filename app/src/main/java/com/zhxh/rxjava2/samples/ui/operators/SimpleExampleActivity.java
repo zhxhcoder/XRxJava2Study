@@ -14,7 +14,10 @@ import com.zhxh.rxjava2.samples.rxbus.Subscribe;
 import com.zhxh.rxjava2.samples.rxbus.ThreadMode;
 import com.zhxh.rxjava2.samples.utils.AppConstant;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -78,16 +81,18 @@ public class SimpleExampleActivity extends AppCompatActivity {
     }
 
     private void doSomeWork() {
-        getObservable()
+
+        Observable.create((ObservableOnSubscribe<String>) e -> {
+            e.onNext("嘟嘟");
+            e.onNext("团团");
+            e.onComplete();
+
+        }).timeout(1, TimeUnit.MICROSECONDS)
                 //子线程运行
                 .subscribeOn(Schedulers.io())
                 //主线程收到通知
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getObserver());
-    }
-
-    private Observable<String> getObservable() {
-        return Observable.just("嘟嘟", "团团");
     }
 
     private Observer<String> getObserver() {
