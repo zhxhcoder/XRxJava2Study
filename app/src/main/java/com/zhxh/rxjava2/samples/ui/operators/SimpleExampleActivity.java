@@ -20,7 +20,9 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -33,6 +35,7 @@ public class SimpleExampleActivity extends AppCompatActivity {
     TextView textView;
     TextView tvBus;
     TextView tvKitBus;
+    protected CompositeDisposable mDisposables = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,26 +78,40 @@ public class SimpleExampleActivity extends AppCompatActivity {
         /*注销*/
         RxBus.getDefault().unRegister(this);
 
-
+        if (mDisposables != null) {
+            mDisposables.clear();
+        }
         com.zhxh.xlibkit.rxbus.RxBus.getDefault().unregister(this);
 
     }
 
     private void doSomeWork() {
 
-        Observable.create((ObservableOnSubscribe<String>) e -> {
+        Disposable disposable = Observable.create((ObservableOnSubscribe<String>) e -> {
 
             e.onNext("嘟嘟");
             Thread.sleep(5);
             e.onNext("团团");
             e.onComplete();
 
-        }).timeout(6, TimeUnit.MICROSECONDS)
+        }).timeout(2, TimeUnit.MILLISECONDS)
                 //子线程运行
                 .subscribeOn(Schedulers.io())
                 //主线程收到通知
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(getObserver());
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        Log.d(TAG, " accept : " + s);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.d(TAG, " throwable : " + throwable.getMessage());
+                    }
+                });
+
+        mDisposables.add(disposable);
     }
 
     private Observer<String> getObserver() {
@@ -132,4 +149,6 @@ public class SimpleExampleActivity extends AppCompatActivity {
     public void onBusInterval(User data) {
         tvBus.append("\nonBusInterval " + data.id);
     }
+
+
 }
