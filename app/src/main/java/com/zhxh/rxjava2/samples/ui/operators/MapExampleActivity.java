@@ -65,13 +65,7 @@ public class MapExampleActivity extends AppCompatActivity {
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<List<ApiUser>, List<User>>() {
-
-                    @Override
-                    public List<User> apply(List<ApiUser> apiUsers) {
-                        return Utils.convertApiUserListToUserList(apiUsers);
-                    }
-                })
+                .map(apiUsers -> Utils.convertApiUserListToUserList(apiUsers))
                 .subscribe(new Observer<List<User>>() {
 
                     @Override
