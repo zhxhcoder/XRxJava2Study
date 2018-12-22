@@ -17,6 +17,7 @@ import com.zhxh.rxjava2.samples.utils.AppConstant;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -49,7 +50,7 @@ public class SimpleExampleActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                doSomeWork();
+                doSomeWork2();
             }
         });
 
@@ -112,6 +113,42 @@ public class SimpleExampleActivity extends AppCompatActivity {
                 });
 
         mDisposables.add(disposable);
+    }
+
+    private void doSomeWork2() {
+
+        Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                Log.d("xxxxx", "subscribe " + +System.currentTimeMillis());
+
+                emitter.onNext("嘟嘟");
+                emitter.onNext("团团");
+                emitter.onComplete();
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d("xxxxx", "onSubscribe " + System.currentTimeMillis());
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        Log.d("xxxxx", "onNext " + +System.currentTimeMillis());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("xxxxx", "onError " + +System.currentTimeMillis());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d("xxxxx", "onComplete " + +System.currentTimeMillis());
+                    }
+                });
     }
 
     private Observer<String> getObserver() {
