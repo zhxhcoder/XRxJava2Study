@@ -39,12 +39,7 @@ public class ZipExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /*
@@ -65,13 +60,10 @@ public class ZipExampleActivity extends AppCompatActivity {
     }
 
     private Observable<List<User>> getAppleFansObservable() {
-        return Observable.create(new ObservableOnSubscribe<List<User>>() {
-            @Override
-            public void subscribe(ObservableEmitter<List<User>> e) {
-                if (!e.isDisposed()) {
-                    e.onNext(Utils.getUserListWhoLovesApple());
-                    e.onComplete();
-                }
+        return Observable.create(e -> {
+            if (!e.isDisposed()) {
+                e.onNext(Utils.getUserListWhoLovesApple());
+                e.onComplete();
             }
         });
     }
