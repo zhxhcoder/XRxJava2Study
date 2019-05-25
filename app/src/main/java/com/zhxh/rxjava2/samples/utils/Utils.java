@@ -23,18 +23,18 @@ public class Utils {
         List<User> userList = new ArrayList<>();
 
         User userOne = new User();
-        userOne.firstname = "xh";
-        userOne.lastname = "Lei";
+        userOne.setFirstname("xh");
+        userOne.setLastname("Lei");
         userList.add(userOne);
 
         User userTwo = new User();
-        userTwo.firstname = "ch";
-        userTwo.lastname = "Zh";
+        userTwo.setFirstname("ch");
+        userTwo.setLastname("Zh");
         userList.add(userTwo);
 
         User userThree = new User();
-        userThree.firstname = "cy";
-        userThree.lastname = "Zh";
+        userThree.setFirstname("cy");
+        userThree.setLastname("Zh");
         userList.add(userThree);
 
         return userList;
@@ -45,18 +45,18 @@ public class Utils {
         List<ApiUser> apiUserList = new ArrayList<>();
 
         ApiUser apiUserOne = new ApiUser();
-        apiUserOne.firstname = "xh";
-        apiUserOne.lastname = "Lei";
+        apiUserOne.setFirstname("xh");
+        apiUserOne.setLastname("Lei");
         apiUserList.add(apiUserOne);
 
         ApiUser apiUserTwo = new ApiUser();
-        apiUserTwo.firstname = "ch";
-        apiUserTwo.lastname = "Zh";
+        apiUserTwo.setFirstname("ch");
+        apiUserTwo.setLastname("Zh");
         apiUserList.add(apiUserTwo);
 
         ApiUser apiUserThree = new ApiUser();
-        apiUserThree.firstname = "cy";
-        apiUserThree.lastname = "Zh";
+        apiUserThree.setFirstname("cy");
+        apiUserThree.setLastname("Zh");
         apiUserList.add(apiUserThree);
 
         return apiUserList;
@@ -68,8 +68,8 @@ public class Utils {
 
         for (ApiUser apiUser : apiUserList) {
             User user = new User();
-            user.firstname = apiUser.firstname;
-            user.lastname = apiUser.lastname;
+            user.setFirstname(apiUser.getFirstname());
+            user.setLastname(apiUser.getLastname());
             userList.add(user);
         }
 
@@ -81,15 +81,15 @@ public class Utils {
         List<User> userList = new ArrayList<>();
 
         User userOne = new User();
-        userOne.id = 1;
-        userOne.firstname = "xh";
-        userOne.lastname = "Lei";
+        userOne.setId(1);
+        userOne.setFirstname("xh");
+        userOne.setLastname("Lei");
         userList.add(userOne);
 
         User userTwo = new User();
-        userTwo.id = 2;
-        userTwo.firstname = "ch";
-        userTwo.lastname = "Zh";
+        userTwo.setId(2);
+        userTwo.setFirstname("ch");
+        userTwo.setLastname("Zh");
         userList.add(userTwo);
 
         return userList;
@@ -101,15 +101,15 @@ public class Utils {
         List<User> userList = new ArrayList<>();
 
         User userOne = new User();
-        userOne.id = 1;
-        userOne.firstname = "xh";
-        userOne.lastname = "Lei";
+        userOne.setId(1);
+        userOne.setFirstname("xh");
+        userOne.setLastname("Lei");
         userList.add(userOne);
 
         User userTwo = new User();
-        userTwo.id = 3;
-        userTwo.firstname = "cy";
-        userTwo.lastname = "Zh";
+        userTwo.setId(3);
+        userTwo.setFirstname("cy");
+        userTwo.setLastname("Zh");
         userList.add(userTwo);
 
         return userList;
@@ -120,7 +120,7 @@ public class Utils {
         List<User> userWhoLovesBoth = new ArrayList<User>();
         for (User appleFan : appleFans) {
             for (User bananaFan : bananaFans) {
-                if (appleFan.id == bananaFan.id) {
+                if (appleFan.getId() == bananaFan.getId()) {
                     userWhoLovesBoth.add(appleFan);
                 }
             }

@@ -79,7 +79,7 @@ public class MapExampleActivity extends AppCompatActivity {
                         textView.append(" onNext 开始");
                         textView.append(AppConstant.LINE_SEPARATOR);
                         for (User user : userList) {
-                            textView.append(" 名字 : " + user.firstname);
+                            textView.append(" 名字 : " + user.getFirstname());
                             textView.append(AppConstant.LINE_SEPARATOR);
                         }
                         Log.d(TAG, " onNext : " + userList.size());

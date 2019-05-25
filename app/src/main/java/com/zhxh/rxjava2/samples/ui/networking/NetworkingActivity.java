@@ -191,7 +191,7 @@ public class NetworkingActivity extends AppCompatActivity {
                     @Override
                     public boolean test(User user) throws Exception {
                         // filtering user who follows me.
-                        return user.isFollowing;
+                        return user.getIsFollowing();
                     }
                 })
                 .subscribeOn(Schedulers.io())
@@ -279,7 +279,7 @@ public class NetworkingActivity extends AppCompatActivity {
                         // here we get the user one by one
                         // and returns corresponding getUserDetailObservable
                         // for that userId
-                        return getUserDetailObservable(user.id);
+                        return getUserDetailObservable(user.getId());
                     }
                 })
                 .subscribeOn(Schedulers.newThread())
@@ -341,7 +341,7 @@ public class NetworkingActivity extends AppCompatActivity {
                         // here we get the user one by one and then we are zipping
                         // two observable - one getUserDetailObservable (network call to get userDetail)
                         // and another Observable.just(user) - just to emit user
-                        return Observable.zip(getUserDetailObservable(user.id),
+                        return Observable.zip(getUserDetailObservable(user.getId()),
                                 Observable.just(user),
                                 new BiFunction<UserDetail, User, Pair<UserDetail, User>>() {
                                     @Override

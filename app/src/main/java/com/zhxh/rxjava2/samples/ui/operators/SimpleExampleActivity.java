@@ -60,7 +60,7 @@ public class SimpleExampleActivity extends AppCompatActivity {
             @Override
             public void onEvent(User s) {
 
-                tvKitBus.append("\neventTag " + s.id);
+                tvKitBus.append("\neventTag " + s.getId());
 
             }
         });
@@ -184,7 +184,7 @@ public class SimpleExampleActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN_THREAD, sticky = true)
     public void onBusInterval(User data) {
-        tvBus.append("\nonBusInterval " + data.id);
+        tvBus.append("\nonBusInterval " + data.getId());
     }
 
 

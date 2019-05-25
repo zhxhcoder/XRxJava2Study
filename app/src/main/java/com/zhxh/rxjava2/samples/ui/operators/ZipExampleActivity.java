@@ -93,7 +93,7 @@ public class ZipExampleActivity extends AppCompatActivity {
                 textView.append(" onNext");
                 textView.append(AppConstant.LINE_SEPARATOR);
                 for (User user : userList) {
-                    textView.append(" 博爱者名字 : " + user.firstname);
+                    textView.append(" 博爱者名字 : " + user.getFirstname());
                     textView.append(AppConstant.LINE_SEPARATOR);
                 }
                 Log.d(TAG, " onNext : " + userList.size());
