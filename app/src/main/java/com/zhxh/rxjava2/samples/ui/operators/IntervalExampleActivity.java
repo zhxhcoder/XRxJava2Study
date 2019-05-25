@@ -74,7 +74,7 @@ public class IntervalExampleActivity extends AppCompatActivity {
             @Override
             public void onNext(Long value) {
 
-                RxBus.getDefault().post(new User(value));
+                RxBus.Companion.getDefault().post(new User(value));
 
                 com.zhxh.xlibkit.rxbus.RxBus.getDefault().postSticky("myTag", new User(value));
 

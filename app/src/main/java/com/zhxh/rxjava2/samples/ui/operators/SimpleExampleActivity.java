@@ -70,14 +70,14 @@ public class SimpleExampleActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         /*注册*/
-        RxBus.getDefault().register(this);
+        RxBus.Companion.getDefault().register(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         /*注销*/
-        RxBus.getDefault().unRegister(this);
+        RxBus.Companion.getDefault().unRegister(this);
 
         if (mDisposables != null) {
             mDisposables.clear();

@@ -1,9 +1,9 @@
-package com.zhxh.rxjava2.samples.rxbus;
+package com.zhxh.rxjava2.samples.rxbus
 
 /**
  * Created by zhxh on 2018/8/24
  */
-public enum ThreadMode {
+enum class ThreadMode {
     /**
      * 主线程
      */
